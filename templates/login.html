@@ -1,0 +1,13 @@
+<html>
+  <body>
+    <form method="POST">
+      <h1>Login</h1><br>
+      <b>Username: </b><input type="text" name="username" /><br/><br/>
+      <b>Password: </b><input type="password" name="password" /><br></br>
+      {% if error=='1' %}
+      <p color="red">Incorrect username or password!</p>
+      {% endif %}
+      <input type="submit" value="Login!"/>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<html>
+  <body>
+    <h1>Welcome back {{user.username}}!</h1>
+    <h3>Karma: {{user.karma}}</h3>
+    <h3>Posts: {{user.post_count}}</h3>
+  </body>
+</html>
