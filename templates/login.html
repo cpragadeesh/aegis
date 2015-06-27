@@ -1,13 +1,17 @@
-<html>
-  <body>
+{% extends 'base.html' %}
+{% block content %}
+  <div class="loginbox">
+    <br><br>
     <form method="POST">
-      <h1>Login</h1><br>
+      <h1>Login</h1><br><br>
       <b>Username: </b><input type="text" name="username" /><br/><br/>
       <b>Password: </b><input type="password" name="password" /><br></br>
       {% if error=='1' %}
       <p color="red">Incorrect username or password!</p>
       {% endif %}
+      <br>
       <input type="submit" value="Login!"/>
     </form>
-  </body>
-</html>
+    <br><br><br>
+  </div>
+{% endblock %}
