@@ -3,9 +3,8 @@ from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import Required
 
 class reg(Form):
-#	rollno = StringField('Roll Number', validators=[Required()])
-#	name   = StringField('Name', validators=[Required()])
-#	password = PasswordField('Password',validators=[Required()])
-	dp = FileField('Picture',validators=[Required()])
+	dp = FileField('How does his look?',validators=[Required()])
+	name = StringField('What is his name?')
+	location  = StringField('Where did you find him?')
+	species = StringField('Species?')
 	submit = SubmitField('Submit')
-

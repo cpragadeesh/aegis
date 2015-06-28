@@ -6,10 +6,12 @@ class Animal(db.Model):
 	__tablename__ = "delta"
 
 	id = db.Column(db.Integer, primary_key=True)
-#	rollno = db.Column(db.Integer, unique=True, nullable=False)
-#	name = db.Column(db.String, nullable=False)
-#	password = db.Column(db.String, nullable= False)
-	dp = db.Column(db.String, nullable= False)
+	dp = db.Column(db.String)
+	name = db.Column(db.Integer)
+	location = db.Column(db.String)
+	species = db.Column(db.String)
+	submitted = db.Column(db.String)
+	points = db.Column(db.Integer)
 
 #	@property
 #	def password(self):
@@ -23,9 +25,9 @@ class Animal(db.Model):
 #		return check_password_hash(self.password_hash, password)
 
 	def __int__(self,dp):
-#		self.rollno = rollno
-#		self.name = name
-#		self.password = password
+		self.name = name
+		self.location = location
+		self.species = species
 		self.dp = dp
 
 	def __repr__(self):
