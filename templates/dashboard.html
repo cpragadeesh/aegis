@@ -1,7 +1,50 @@
-<html>
-  <body>
-    <h1>Welcome back {{user.name}}!</h1>
-    <h3>Karma: {{user.karma}}</h3>
-    <h3>Posts: {{user.post_count}}</h3>
-  </body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<div class='profile'>
+	<div class='dp'></div>
+	<p class='text-center name'>Brahadeesh</p>
+	<p class='text-center'>Chennai, India</p>
+	<ul>
+		<li>Karma: </li>
+		<li>Posts: </li>
+		<li>Member Since: </li>
+	</ul>
+	<a href="#">
+          <span class="search"><img src='http://ignite.microsoft.com/Images/search-icon.png'</span>
+     </a>
+</div>
+<div class='feed'>
+ <div class = 'holders'>
+ 	<div class='info'>
+ 		<ul>
+ 			<li>Submitted By:</li>
+ 			<li>Name Of Animal:</li>
+ 			<li>Species:</li>
+ 			<li>Location:</li>
+ 			<li>Credits:</li>
+
+ 		</ul>
+ 	</div>
+ 	<div class='animal'>
+ 		<img src="bg.png">
+ 	</div>
+ </div>
+ <div class = 'holders'>
+ 	<div class='info'>
+ 		<ul>
+ 			<li>Submitted By:</li>
+ 			<li>Name Of Animal:</li>
+ 			<li>Species:</li>
+ 			<li>Location:</li>
+ 			<li>Credits:</li>
+
+ 		</ul>
+ 	</div>
+ 	<div class='animal'>
+ 		<img src="bg.png">
+ 	</div>
+
+ </div>
+ 
+</div>	
+{% endblock %}
