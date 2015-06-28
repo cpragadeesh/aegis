@@ -1,50 +1,33 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class='profile'>
-	<div class='dp'></div>
-	<p class='text-center name'>Brahadeesh</p>
-	<p class='text-center'>Chennai, India</p>
-	<ul>
-		<li>Karma: </li>
-		<li>Posts: </li>
-		<li>Member Since: </li>
-	</ul>
-	<a href="#">
-          <span class="search"><img src='http://ignite.microsoft.com/Images/search-icon.png'</span>
-     </a>
-</div>
-<div class='feed'>
- <div class = 'holders'>
- 	<div class='info'>
- 		<ul>
- 			<li>Submitted By:</li>
- 			<li>Name Of Animal:</li>
- 			<li>Species:</li>
- 			<li>Location:</li>
- 			<li>Credits:</li>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aegis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="../static/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/style.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class="header">
+      <div id="logo">aegis</div>
+        {%if session.logged_in == True %}
+          <a href={{url_for('logout')}}> <button class='logout'>logout</button></a>
+        {% else %}
+            <div></div>
+          {% endif %}
+    </div>
+      <div class="container">	
+  <h1>Hello,</h1>
+  {% for img in j %} 
+  	Submitted BY: {{img.submitted}}<br>Name: {{img.name}}<br>Location: {{img.location}}<br>Species: {{img.species}}<br>Points: {{img.points}}<br>
+	<img width=100px height=100px src="{{url_for('static', filename='pics/' + img.dp)}}"> 	
+  {% endfor %}
 
- 		</ul>
- 	</div>
- 	<div class='animal'>
- 		<img src="bg.png">
- 	</div>
- </div>
- <div class = 'holders'>
- 	<div class='info'>
- 		<ul>
- 			<li>Submitted By:</li>
- 			<li>Name Of Animal:</li>
- 			<li>Species:</li>
- 			<li>Location:</li>
- 			<li>Credits:</li>
+    </div>
+  </body>
+</html>
 
- 		</ul>
- 	</div>
- 	<div class='animal'>
- 		<img src="bg.png">
- 	</div>
 
- </div>
- 
-</div>	
-{% endblock %}
