@@ -20,7 +20,11 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'
 db = SQLAlchemy(app)
 Bootstrap(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 0.5 * 1024 * 1024
+
+# db1 = sqlite3.connect("users.db")
+# c = db1.cursor()
+# c.execute("SELECT * FROM USERS")
+
 
 # db1 = sqlite3.connect("users.db")
 # c = db1.cursor()
@@ -70,6 +74,17 @@ def validate_login(uid, passwd):
 
 	return False		
 
+<<<<<<< HEAD
+=======
+def validate_login(uid, passwd):
+	userlist = [('sam', 'sam'), ('john', 'john')]
+	for i in userlist:
+		if i[0] == uid and i[1] == passwd:
+			return True
+
+	return False		
+
+>>>>>>> manjithd2-master
 @app.route("/login", methods=['GET','POST'])
 def login():
 	error = None
@@ -80,10 +95,17 @@ def login():
 		else:
 			session['logged_in'] = True
 			flash('you logged in')
+<<<<<<< HEAD
 			resp = make_response(redirect(url_for('dashboard')))
 			resp.set_cookie('nick', request.form['username'])
 			return resp
 			return redirect(url_for('dashboard'))
+=======
+			resp = make_response(redirect(url_for('upload')))
+			resp.set_cookie('nick', request.form['username'])
+			return resp
+	
+>>>>>>> manjithd2-master
 	return render_template('login.html',error=error)
 
 @app.route('/logout')
@@ -93,8 +115,11 @@ def logout():
 	flash('you logged out')
 	return redirect(url_for('login'))
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> manjithd2-master
 @app.route("/upload", methods = ['GET', 'POST'])
 @login_required
 def upload():
@@ -137,12 +162,16 @@ def dashboard():
         
         print j
 
+<<<<<<< HEAD
         return render_template('dashboard.html',j=j)
 
 # @app.route('/<rollno>')
 # def display(rollno):
 # 	j = User.query.filter_by(rollno=rollno).first_or_404()
 # 	return send_from_directory(app.config['UPLOAD_FOLDER'], j.dp)
+=======
+        return render_template('dashboard.html', user=user, j=j)
+>>>>>>> manjithd2-master
 
 @app.route('/search', methods=['GET', 'POST'])
 @login_required
@@ -154,6 +183,22 @@ def search():
 		j = Animal.query.all()
 		for animal in j:
 			if animal.name == term or animal.species == term:
+				results.append(animal)
+		print results		
+		return render_template('search.html', results=results)
+	
+	else:
+		return render_template('search.html')
+
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+	if request.method == 'POST':
+		term = request.form['query']
+		term = term.lower()
+		results = []
+		j = Animal.query.all()
+		for animal in j:
+			if (term in ''.join(animal.name.lower().split())) or (term in ''.join(animal.species.lower().split())) or (term in animal.location.lower()):
 				results.append(animal)
 		print results		
 		return render_template('search.html', results=results)

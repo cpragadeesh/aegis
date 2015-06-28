@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,3 +32,43 @@
 </html>
 
 
+=======
+{% extends 'base.html' %}
+{% block content %}
+<div class='profile'>
+	<div class='dp'></div>
+	<p class='text-center name'>{{user.name}}</p>
+	<p class='text-center'>Chennai, India</p>
+	<ul>
+		<li>Karma: {{user.karma}}</li>
+		<li>Posts: {{user.post}}</li>
+		<li>Member Since: 27th July, 2015</li>
+	</ul>
+	<div class='navi'>
+		 <a href='/search'><img width="70px" height="70px" src='static/searchicon.png'/></a>
+         <a href='#'><img width="40px" height="40px" src='static/settingsicon.png'/></a>
+         <a href='/upload'><img width="50px" height="50px" src='static/uploadicon.png'/></a>
+    </div>
+</div>
+<div class='feed'>
+	<h2>Recent Submissions</h2>
+{% for animal in j %}
+	 <div class = 'holders'>
+	 	<div class='info'>
+	 		<ul>
+	 			<li>Name Of Animal: <i>{{animal.name}}<i></li>
+	 			<li>Species: {{animal.species}}</li>
+	 			<li>Location: {{animal.location}}</li>
+	 			<li>Credits: {{animal.points}}</li>
+	 			<li>Submitted By: {{animal.submitted}}</li>	
+			</ul>
+	 	</div>
+	 	<div class='animal'>
+	 		<img width='265px' height='265px' src="{{url_for('static', filename='pics/' + animal.dp)}}">
+	 	</div>
+	 </div>
+{% endfor %}
+ 
+</div>	
+{% endblock %}
+>>>>>>> manjithd2-master

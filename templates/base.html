@@ -12,6 +12,7 @@
   </head>
   <body>
     <div class="header">
+<<<<<<< HEAD
       <div id="logo">aegis</div>
         {%if session.logged_in == True %}
           <a href={{url_for('logout')}}> <button class='logout'>logout</button></a>
@@ -21,6 +22,10 @@
         {% else %}
             <div></div>
           {% endif %}
+=======
+      <div id="logo"><a href="/dashboard">aegis</a></div>
+      <button class='logout'>Logout</button>
+>>>>>>> manjithd2-master
     </div>
     <div class="container">
       {% block content %}
