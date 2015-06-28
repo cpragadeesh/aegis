@@ -17,6 +17,11 @@ body {
 	float: left;
 }
 
+#logo a {
+	text-decoration: none;
+	color: white;
+}
+
 .loginbox {
 	position: absolute;
 	top: 220px;
@@ -111,7 +116,7 @@ ul {
 	float:right;
 	height:265px;
 	width: 265px;
-	background-color: silver;
+	background-size: 100%;
 }
 
 .name{

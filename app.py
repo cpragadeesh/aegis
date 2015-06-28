@@ -20,7 +20,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'
 db = SQLAlchemy(app)
 Bootstrap(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 0.5 * 1024 * 1024
 
 # db1 = sqlite3.connect("users.db")
 # c = db1.cursor()
@@ -93,8 +92,6 @@ def logout():
 	flash('you logged out')
 	return redirect(url_for('login'))
 
-
-
 @app.route("/upload", methods = ['GET', 'POST'])
 @login_required
 def upload():
@@ -137,7 +134,7 @@ def dashboard():
         
         print j
 
-        return render_template('dashboard.html',j=j)
+        return render_template('dashboard.html', user=user, j=j)
 
 @app.route('/<rollno>')
 def display(rollno):
@@ -148,11 +145,11 @@ def display(rollno):
 def search():
 	if request.method == 'POST':
 		term = request.form['query']
-		print term
+		term = term.lower()
 		results = []
 		j = Animal.query.all()
 		for animal in j:
-			if animal.name == term or animal.species == term:
+			if (term in ''.join(animal.name.lower().split())) or (term in ''.join(animal.species.lower().split())) or (term in animal.location.lower()):
 				results.append(animal)
 		print results		
 		return render_template('search.html', results=results)
