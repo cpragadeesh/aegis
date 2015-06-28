@@ -59,7 +59,7 @@ def allowed_file(filename):
 
 @app.route("/")
 def home():
-	return render_template("home.html")
+	return redirect(url_for('login'))
 
 def validate_login(uid, passwd):
 	userlist = [('sam', 'sam'), ('john', 'john')]
@@ -79,10 +79,10 @@ def login():
 		else:
 			session['logged_in'] = True
 			flash('you logged in')
-			resp = make_response(redirect(url_for('upload')))
+			resp = make_response(redirect(url_for('dashboard')))
 			resp.set_cookie('nick', request.form['username'])
 			return resp
-	
+			return redirect(url_for('dashboard'))
 	return render_template('login.html',error=error)
 
 @app.route('/logout')
@@ -112,7 +112,7 @@ def upload():
 							)
 			db.session.add(animal)
 			db.session.commit()
-			return render_template("success.html")
+			return redirect(url_for('dashboard'))
 		else:
 			return render_template("reject.html")
 
@@ -136,12 +136,13 @@ def dashboard():
 
         return render_template('dashboard.html', user=user, j=j)
 
-@app.route('/<rollno>')
-def display(rollno):
-	j = User.query.filter_by(rollno=rollno).first_or_404()
-	return send_from_directory(app.config['UPLOAD_FOLDER'], j.dp)
+# @app.route('/<rollno>')
+# def display(rollno):
+# 	j = User.query.filter_by(rollno=rollno).first_or_404()
+# 	return send_from_directory(app.config['UPLOAD_FOLDER'], j.dp)
 
 @app.route('/search', methods=['GET', 'POST'])
+@login_required
 def search():
 	if request.method == 'POST':
 		term = request.form['query']
