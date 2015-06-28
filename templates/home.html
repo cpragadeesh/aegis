@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+ <div class="container">	
+  <h1>Hello,</h1>
+  <p>Click <a href="{{url_for('upload')}}"> here </a> to register</p>
+ </div>
+{% endblock %}

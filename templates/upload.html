@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class= "container">
+
+	<h2> Upload </h2>
+	
+	{% from "_formhelpers.html" import render_field %}
+	<form method="post" action="/upload" enctype="multipart/form-data">
+
+		{{ form.hidden_tag()}}
+  	<dl>
+     	{{ render_field(form.dp) }}
+     	{{ render_field(form.name) }}
+     	{{ render_field(form.location) }}
+     	{{ render_field(form.species) }}
+  	</dl>
+  		<p><input type="submit" value="Upload">
+	</form>
+
+</div>
+{% endblock %}

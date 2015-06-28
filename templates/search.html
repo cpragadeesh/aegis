@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2> Search Name/Species/Location: </h2><br>
+<form method='post'>
+<input type='text' name='query'/>
+<input type='submit' value='submit'/>
+</form>
+{% for animal in results %}
+	 <div class = 'holders'>
+	 	<div class='info'>
+	 		<ul>
+	 			<li>Name Of Animal: <i>{{animal.name}}<i></li>
+	 			<li>Species: {{animal.species}}</li>
+	 			<li>Location: {{animal.location}}</li>
+	 			<li>Credits: {{animal.points}}</li>
+	 			<li>Submitted By: {{animal.submitted}}</li>	
+			</ul>
+	 	</div>
+	 	<div class='animal'>
+	 		<img width='265px' height='265px' src="{{url_for('static', filename='pics/' + animal.dp)}}">
+	 	</div>
+	 </div>
+{% endfor %}	
+{% endblock %}
